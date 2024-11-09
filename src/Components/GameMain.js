@@ -5,9 +5,8 @@ import '../style/GameMain.css';
 function GameMain() {
   const [name, setName] = useState('');
   const [lives, setLives] = useState(3);
-  const [chartData, setChartData] = useState([]);
-  const [selectedChart, setSelectedChart] = useState(null);
-  const [financialData, setFinancialData] = useState(null);
+  const [chartData, setChartData] = useState(null); // Main chart and other charts
+  const [financialData, setFinancialData] = useState(null); // Financial data for main chart
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,16 +17,12 @@ function GameMain() {
 
     const fetchChartData = async () => {
       try {
-        const responses = await Promise.all([
-          fetch('https://api.example.com/chart1'),
-          fetch('https://api.example.com/chart2'),
-          fetch('https://api.example.com/chart3'),
-          fetch('https://api.example.com/chart4'),
-          fetch('https://api.example.com/chart5'),
-          fetch('https://api.example.com/chart6'),
-        ]);
-        const data = await Promise.all(responses.map((response) => response.json()));
+        const response = await fetch('http://localhost:8000/sectors-charts', {
+          mode: 'cors'
+        });
+        const data = await response.json();
         setChartData(data);
+        setFinancialData(data.financial_data); // Set initial financial data for main chart
       } catch (error) {
         console.error('차트 데이터를 불러오는데 실패했습니다:', error);
       }
@@ -44,21 +39,43 @@ function GameMain() {
     navigate('/GameIntro');
   };
 
-  const handleChartClick = async (chartId) => {
-    const selected = chartData.find((chart) => chart.id === chartId);
-    setSelectedChart(selected || null);
-    setFinancialData(null);
-
-    if (selected) {
-      try {
-        const response = await fetch(`https://api.example.com/financialData/${chartId}`);
-        const data = await response.json();
-        setFinancialData(data);
-      } catch (error) {
-        console.error('재무제표 데이터를 불러오는데 실패했습니다:', error);
-        setFinancialData(null);
-      }
+  const handleChartClick = (index) => {
+    if (chartData && chartData.other_charts_images && chartData.other_charts_images[index]) {
+      console.log(`Chart ${index + 1} clicked`);
     }
+  };
+
+  const renderFinancialTable = () => {
+    if (!financialData) return <p>재무제표 데이터를 불러오는 중입니다...</p>;
+
+    return (
+      <table className="financial-table">
+        <thead>
+          <tr>
+            <th>분기</th>
+            <th>매출액</th>
+            <th>순이익</th>
+            <th>영업이익률</th>
+            <th>부채비율</th>
+            <th>EPS (주당순이익)</th>
+            <th>ROE (자기자본이익률)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {financialData.map((item, index) => (
+            <tr key={index}>
+              <td>{item.quarter}</td>
+              <td>{item.revenue}</td>
+              <td>{item.net_profit}</td>
+              <td>{item.operating_margin}</td>
+              <td>{item.debt_ratio}</td>
+              <td>{item.eps}</td>
+              <td>{item.roe}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
   };
 
   return (
@@ -81,14 +98,14 @@ function GameMain() {
 
       <div className="content-main">
         <div className="chart-grid">
-          {chartData.length === 6
-            ? chartData.map((chart, index) => (
+          {chartData && chartData.other_charts_images
+            ? chartData.other_charts_images.map((img, index) => (
                 <div
-                  key={chart.id || index}
+                  key={index}
                   className="chart-card"
-                  onClick={() => handleChartClick(chart.id)}
+                  onClick={() => handleChartClick(index)}
                 >
-                  <h3>{chart.name}</h3>
+                  <img src={`data:image/png;base64,${img}`} alt={`Chart ${index + 1}`} className="chart-image" />
                 </div>
               ))
             : Array.from({ length: 6 }, (_, index) => (
@@ -100,29 +117,19 @@ function GameMain() {
 
         <div className="right-panel">
           <div className="chart-detail">
-            <h3>선택한 주식 차트 및 재무제표</h3>
-            {selectedChart ? (
-              <div className="chart-info">
-                <div className="chart-image">
-                  <img
-                    src={selectedChart.chartImageUrl || `${process.env.PUBLIC_URL}/image/default_chart.png`}
-                    alt={`${selectedChart.name} 차트`}
-                    className="selected-chart-image"
-                  />
-                </div>
-                <h4>{selectedChart.name}</h4>
-                <div className="financial-data">
-                  <h5>재무제표:</h5>
-                  {financialData ? (
-                    <pre>{JSON.stringify(financialData, null, 2)}</pre>
-                  ) : (
-                    <p>재무제표 데이터를 불러오는 중입니다...</p>
-                  )}
-                </div>
+            <h3>문제의 차트</h3>
+            <div className="chart-info"> 
+              {chartData && chartData.main_sector_title && <h4>{chartData.main_sector_title}</h4>}
+              {chartData && chartData.main_chart_image ? (
+                <img src={`data:image/png;base64,${chartData.main_chart_image}`} alt="Main Chart" className="main-chart-image" />
+              ) : (
+                <p>메인 차트 이미지를 불러오는 중입니다...</p>
+              )}
+              <div className="financial-data">
+                <h5>재무제표:</h5>
+                {renderFinancialTable()}
               </div>
-            ) : (
-              <div className="chart-info">차트를 선택해 주세요</div>
-            )}
+            </div>
           </div>
 
           <div className="analysis-container">
