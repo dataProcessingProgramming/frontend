@@ -7,6 +7,11 @@ function GameIntro() {
   const [lives, setLives] = useState(3);
   const navigate = useNavigate();
 
+  // 체크박스 상태 관리
+  const [showMainSectorTitle, setShowMainSectorTitle] = useState(false);
+  const [showFinancialData, setShowFinancialData] = useState(false);
+  const [showOtherCharts, setShowOtherCharts] = useState(false);
+
   useEffect(() => {
     const storedName = localStorage.getItem('userName');
     if (storedName) {
@@ -27,7 +32,12 @@ function GameIntro() {
   };
 
   const handleSubmitClick = () => {
-    navigate('/gamemain'); 
+    // 체크박스 상태를 localStorage에 저장
+    localStorage.setItem('showMainSectorTitle', showMainSectorTitle);
+    localStorage.setItem('showFinancialData', showFinancialData);
+    localStorage.setItem('showOtherCharts', showOtherCharts);
+
+    navigate('/gamemain');
   };
 
   return (
@@ -55,9 +65,9 @@ function GameIntro() {
           <p>게임 규칙을 알려드릴게요</p>
 
           <div className="rules">
-            <p><input type="checkbox" /> 문제에 주어진 차트의 종목명</p>
-            <p><input type="checkbox" /> 문제에 주어진 차트의 이후 1년간의 재무제표</p>
-            <p><input type="checkbox" /> 동일 섹터군의 다른 종목의 특정 시점 이후의 차트</p>
+            <p><input type="checkbox" checked={showMainSectorTitle} onChange={() => setShowMainSectorTitle(!showMainSectorTitle)} /> 문제에 주어진 차트의 종목명</p>
+            <p><input type="checkbox" checked={showFinancialData} onChange={() => setShowFinancialData(!showFinancialData)} /> 문제에 주어진 차트의 재무제표</p>
+            <p><input type="checkbox" checked={showOtherCharts} onChange={() => setShowOtherCharts(!showOtherCharts)} /> 동일 섹터군의 다른 종목의 이후 차트</p>
           </div>
 
           <button className="submit-button" onClick={handleSubmitClick}>

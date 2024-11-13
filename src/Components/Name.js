@@ -38,7 +38,7 @@ function Name() {
           onChange={handleInputChange} 
         />
 
-        <button className="submit-button" onClick={handleSubmit}>제출</button>
+        <button className="start-button" onClick={handleSubmit}>제출</button>
       </div>
 
       <div className="bottom-bar">
