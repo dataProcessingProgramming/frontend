@@ -46,24 +46,27 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   flex: 1;
-  max-width: 750px; /* Increase max-width to make room for larger cards */
+  max-width: 750px;
   margin-left: -3rem;
   margin-top: -1.5rem;
 }
 
 .chart-card {
+  font-family: 'Paperlogy-4Regular';
   background-color: #f0f0f0;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 320px; /* Increased height for larger display */
-  width: 100%; /* Full width for uniformity */
+
+  justify-content: flex-start; 
+  align-items: flex-start;
+  height: 320px;
+  width: 100%;
   padding: 0.4rem;
   box-sizing: border-box;
   cursor: pointer;
-  text-align: center;
+  position: relative;
+  text-align: left;
 }
 
 .chart-card h3 {
@@ -92,6 +95,8 @@
 }
 
 .chart-detail {
+
+  font-family: 'Paperlogy-4Regular';
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -114,6 +119,7 @@
 }
 
 .analysis-container {
+  font-family: 'Paperlogy-4Regular';
   background-color: #f9f9f9;
   padding: 1rem;
   border-radius: 8px;
@@ -125,6 +131,7 @@
 }
 
 .analysis-input {
+  font-family: 'Paperlogy-4Regular';
   width: 100%;
   padding: 0.5rem;
   height: 150px;

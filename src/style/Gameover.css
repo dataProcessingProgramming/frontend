@@ -1,0 +1,55 @@
+.passed-count-over {
+    margin-right: 1.5rem;
+    font-family: 'Paperlogy-5Medium';
+    font-size: 1.4rem;
+}
+
+.container-over {
+    background-color: #e0f2fe;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    min-height: 500px; 
+    height: auto; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+  }
+  
+  
+  .container-over h1 {
+    font-family: 'Paperlogy-5Medium';
+    font-size: 2.2rem;
+    color: #3366ff;
+    font-weight: 700;
+    margin-top: -5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .container-over p {
+    font-family: 'Paperlogy-4Regular';
+    font-size: 1.3rem;
+    color: #152a6a;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  .over-button {
+    font-family: 'Paperlogy-4Regular';
+    padding: 0.5rem 1rem;
+    background-color: #3366ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-left: 12rem;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .over-button:hover {
+    background-color: #254edb;
+  }
+  

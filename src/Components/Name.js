@@ -19,11 +19,19 @@ function Name() {
     }
   };
 
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
   return (
     <div className="app">
       <div className="top-bar">
         <div className="title">
-          <h1>RichReach</h1>
+          <h3 className="title-1">주식학습플랫폼</h3>
+          <h1 className="title-2">RichReach</h1>
         </div>
       </div>
       
@@ -36,9 +44,11 @@ function Name() {
           placeholder="이름을 입력하세요" 
           value={name} 
           onChange={handleInputChange} 
+          onKeyPress={handleKeyPress} 
         />
 
-        <button className="start-button" onClick={handleSubmit}>제출</button>
+
+        <button className="submit-name" onClick={handleSubmit}>제출</button>
       </div>
 
       <div className="bottom-bar">

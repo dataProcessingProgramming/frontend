@@ -1,6 +1,27 @@
 
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=M+PLUS+2:wght@100..900&family=Nanum+Gothic&display=swap');
 
+@font-face {
+  font-family: 'Paperlogy-4Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Paperlogy-5Medium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Paperlogy-6SemiBold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
 .app {
   display: flex;
   flex-direction: column;
@@ -12,14 +33,13 @@
 .top-bar {
   width: 100%;
   padding: 1rem;
-  height: 2rem;
+  height: auto;
   background-color: #3366ff;
   color: white;
   text-align: center;
 }
 
 .bottom-bar {
-  margin-top: -2rem;
   width: 100%;
   padding: 1rem;
   height: 1.5rem;
@@ -27,63 +47,67 @@
 }
 
 .title {
-  font-size: 0.8rem;
-  font-family: "M PLUS 2", sans-serif;
-  margin-top: -2.5vh;
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-left: 1vw;
+}
+
+.title-1 {
+  font-size: 0.9rem;
+  font-family: 'Paperlogy-4Regular';
+  margin-top: 2.2rem;
+  margin-bottom: -1.5rem;
+}
+
+.title-2 {
+  font-size: 1.7rem;
+  font-family: "M PLUS 2", sans-serif;
 }
 
 .content {
   text-align: center;
   padding: 2rem;
   flex: 1;
-  display: flex; /* Flexbox를 사용하여 자식 요소를 정렬합니다 */
-  flex-direction: column; /* 세로 방향으로 정렬 */
-  align-items: center; /* 수평 중앙 정렬 */
-}
-
-.top-image {
-  width: 66rem;
-  height: 11rem;
-  margin-top: -2vh;
-}
-
-
-.bottom-image {
-  width: 10rem;
-  height: 10rem;
-}
-
-
-.text {
-  font-family: "M PLUS 2", sans-serif;
-  font-size: 2.5rem;
-  color: #3366ff;
-  font-weight: 700;
-  margin-top: 4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .text2 {
-  font-family: "M PLUS 2", sans-serif;
-  font-size: 1rem;
+  font-family: 'Paperlogy-6SemiBold';
+  font-size: 2rem;
   color: #3366ff;
   margin-top: 30px;
   font-weight: 400;
+  margin-top: 10rem;
 }
 
-.start-button {
-  font-family: "M PLUS 2", sans-serif;
-  padding: 0.5rem 1rem;
-  font-size: 1.2rem;
+.submit-name {
+  font-family: 'Paperlogy-5Medium';
+  padding: 0.8rem 1.5rem;
+  font-size: 1.3rem;
   margin-top: 1.5rem;
-  margin-bottom : 1rem;
+  margin-bottom: 1rem;
   background-color: #3366ff;
   color: white;
   border: none;
   border-radius: 0.3125rem;
   cursor: pointer;
+  align-items: center;
 }
+
+.name-input {
+  font-family: 'Paperlogy-5Medium';
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 320px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
 .footer-text {
   margin-top: 1.5rem;
   font-family: "M PLUS 2", sans-serif;

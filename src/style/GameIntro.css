@@ -24,16 +24,29 @@
     margin-top: -0.5rem;
   }
   
-  .back-arrow {
-    width: 2.2rem;
-    height: 3rem;
+  .back-arrow-intro {
+    width: 2rem;
+    height: 3.2rem;
     cursor: pointer;
+    margin-left: 0.2rem;
   }
   
   .title {
     font-size: 1rem;
     font-family: "M PLUS 2", sans-serif;
     margin-left: 1vw;
+  }
+
+  .title-1 {
+    font-size: 0.9rem;
+    font-family: 'Paperlogy-4Regular';
+    margin-top: 2.2rem;
+    margin-bottom: -1.5rem;
+  }
+  
+  .title-2 {
+    font-size: 1.7rem;
+    font-family: "M PLUS 2", sans-serif;
   }
   
   .hearts {
@@ -58,21 +71,31 @@
     border-radius: 8px;
     width: 100%;
     max-width: 500px;
-    margin-top: 2vh;
+    margin-top: -3.5rem;
+
   }
   
   .container h2 {
-    font-family: "M PLUS 2", sans-serif;
-    font-size: 1.5rem;
+    font-family: 'Paperlogy-5Medium';
+    font-size: 2rem;
     color: #3366ff;
     font-weight: 700;
+    margin-top: 0rem;
     margin-bottom: 1rem;
   }
   
   .container p {
-    font-family: "M PLUS 2", sans-serif;
-    font-size: 1rem;
-    color: #3366ff;
+    font-family: 'Paperlogy-4Regular';
+    font-size: 1.3rem;
+    color: #1b3a98;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  .container h3 {
+    font-family: 'Paperlogy-4Regular';
+    font-size: 1.3rem;
+    color: #1b3a98;
     font-weight: 400;
     margin-bottom: 1rem;
   }
@@ -90,7 +113,7 @@
   }
   
   .submit-button {
-    font-family: "M PLUS 2", sans-serif;
+    font-family: 'Paperlogy-4Regular';
     padding: 0.5rem 1.5rem;
     font-size: 1rem;
     background-color: #3366ff;
@@ -109,6 +132,12 @@
     padding: 1rem;
     background-color: #3366ff;
     color: white;
+  }
+
+  .bottom-bar p {
     text-align: left;
+    margin-left: 0.4rem;
+    margin-top: -0.1rem;
+    font-family: "M PLUS 2", sans-serif;
   }
   

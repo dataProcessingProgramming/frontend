@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=M+PLUS+2:wght@100..900&family=Nanum+Gothic&display=swap');
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+.top-bar {
+  width: 100%;
+  padding: 1rem;
+  height: 2rem;
+  background-color: #3366ff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom-bar {
+  width: 100%;
+  padding: 1rem;
+  height: 1.5rem;
+  background-color: #3366ff;
+  color: white;
+  text-align: center;
+}
+
+.title {
+  font-size: 1rem;
+  font-family: 'M PLUS 2', sans-serif;
+  margin-left: 1vw;
+}
+
+.arrow-container {
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0;
+  margin-left: 1rem;
+}
+
+.back-arrow {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.content {
+  text-align: center;
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-pass {
+  background-color: #e0f2fe;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  min-height: 500px; 
+  height: auto; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+}
+
+
+.container-pass h1 {
+  font-family: 'Paperlogy-5Medium';
+  font-size: 2.2rem;
+  color: #3366ff;
+  font-weight: 700;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+}
+
+.container-pass p {
+  font-family: 'Paperlogy-4Regular';
+  font-size: 1.3rem;
+  color: #152a6a;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.footer-text {
+  margin-top: 1.5rem;
+  font-family: 'M PLUS 2', sans-serif;
+  font-size: 1rem;
+  color: #000;
+}
+
+.next-button {
+  font-family: 'Paperlogy-4Regular';
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  background-color: #3366ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-left: 11rem;
+  margin-top: 1rem;
+}
+
+.next-button:hover {
+  background-color: #254edb;
+}
+
+.heart {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.passed-count {
+  text-align: right;
+  font-family: 'Paperlogy-4Regular';
+  margin-right: 0.5rem;
+}
