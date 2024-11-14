@@ -43,7 +43,7 @@
 }
 
 .chart-grid {
-  background-color: #f9f9f9;
+  background-color: #fff;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
@@ -55,7 +55,7 @@
 
 .chart-card {
   font-family: 'Paperlogy-4Regular';
-  background-color: #f9f9f9;
+  background-color: #fff;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -80,6 +80,12 @@
   object-fit: contain; /* Keeps the aspect ratio without cropping */
 }
 
+.chart-card-static{
+  background-color: #dde6ff42;
+  font-family: 'Paperlogy-4Regular';
+  margin-top: 1rem;
+}
+
 .right-panel {
   display: flex;
   flex-direction: column;
@@ -97,12 +103,12 @@
   width: 100%;
   flex-direction: column;
   align-items: center; /* 중앙 배치 */
-  background-color: #f9f9f9;
+  background-color: #fff;
   padding: 1.5rem;
   border-radius: 8px;
   box-sizing: border-box;
   flex-grow: 1;
-  min-height: 600px; /* Increased height for main chart and financials */
+  min-height: 300px; /* Increased height for main chart and financials */
   width: 100%; /* 전체 너비 사용 */
   max-width: 1000px; /* 최대 너비를 설정하여 차트가 지나치게 커지지 않도록 제한 */
 }
@@ -116,7 +122,7 @@
 
 .analysis-container {
   font-family: 'Paperlogy-4Regular';
-  background-color: #f9f9f9;
+  background-color: #fff;
   padding: 1rem;
   border-radius: 8px;
   box-sizing: border-box;
@@ -186,5 +192,5 @@
 }
 
 .financial-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }

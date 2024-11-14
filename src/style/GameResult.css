@@ -51,7 +51,7 @@
   }
   
   .chart-card {
-    background-color: #f0f0f0;
+    background-color: #fff;
     padding: 1.5rem;
     border-radius: 8px;
     text-align: center;
@@ -79,9 +79,10 @@
   
   .chart-detail,
   .analysis-container {
-    background-color: #f9f9f9;
+    background-color: #dde6ff42;
     padding: 1.5rem;
     border-radius: 8px;
+    margin-top: 1rem;
   }
   
   .chart-detail {

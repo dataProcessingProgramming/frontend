@@ -1,5 +1,7 @@
+// Name.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import '../style/Name.css';
 
 function Name() {
@@ -19,7 +21,6 @@ function Name() {
     }
   };
 
-
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       handleSubmit();
@@ -27,7 +28,13 @@ function Name() {
   };
 
   return (
-    <div className="app">
+    <motion.div
+      className="app"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{ duration: 0.75 }}
+    >
       <div className="top-bar">
         <div className="title">
           <h3 className="title-1">주식학습플랫폼</h3>
@@ -46,14 +53,11 @@ function Name() {
           onChange={handleInputChange} 
           onKeyPress={handleKeyPress} 
         />
-
-
         <button className="submit-name" onClick={handleSubmit}>제출</button>
       </div>
 
-      <div className="bottom-bar">
-      </div>
-    </div>
+      <div className="bottom-bar"></div>
+    </motion.div>
   );
 }
 

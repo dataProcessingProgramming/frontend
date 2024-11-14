@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../style/GameResult.css';
 
 function GameResult() {
@@ -8,6 +8,10 @@ function GameResult() {
   const [chartData, setChartData] = useState(null); // Main chart and other charts
   const [financialData, setFinancialData] = useState(null); // Financial data for main chart
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // 전달된 데이터를 가져옵니다.
+  const { userAnalysis, feedback } = location.state || {};
 
   useEffect(() => {
     const storedName = localStorage.getItem('userName');
@@ -81,8 +85,9 @@ function GameResult() {
   return (
     <div className="app">
       <div className="top-bar">
-        <div className="title">
-          <h1>RichReach</h1>
+      <div className="title">
+          <h3 className="title-1">주식학습플랫폼</h3>
+          <h1 className="title-2">RichReach</h1>
         </div>
         <div className="hearts">{renderHearts()}</div>
       </div>
@@ -102,18 +107,18 @@ function GameResult() {
           <div className="chart-detail">
             <h3>사용자가 분석한 내용</h3>
             <div className="chart-info"> 
-              
+              <p>{userAnalysis}</p> {/* 사용자가 분석한 내용 표시 */}
             </div>
           </div>
 
           <div className="chart-detail">
             <h3>챗GPT를 통한 분석 내용</h3>
             <div className="chart-info"> 
-              
+              <p>{feedback}</p> {/* ChatGPT 분석 내용 표시 */}
             </div>
           </div>
           
-          <button className="submit-button">다음</button>
+          <button className="submit-button" onClick={() => navigate('/NextPage')}>다음</button>
           
         </div>
       </div>

@@ -1,6 +1,6 @@
 // App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Main from './Components/Main';
 import Name from './Components/Name';
 import GameIntro from './Components/GameIntro';
@@ -10,12 +10,15 @@ import PassResult from './Components/PassResult';
 import FailResult from './Components/FailResult';
 import Gameover from './Components/Gameover';
 import Gameend from './Components/Gameend';
-import './App.css'
+import { AnimatePresence } from 'framer-motion';
+import './App.css';
 
 function App() {
+  const location = useLocation();
+
   return (
-    <Router>
-      <Routes>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Main />} />
         <Route path="/Name" element={<Name />} />
         <Route path="/GameIntro" element={<GameIntro />} />
@@ -26,8 +29,16 @@ function App() {
         <Route path="/Gameover" element={<Gameover />} />
         <Route path="/Gameend" element={<Gameend />} />
       </Routes>
+    </AnimatePresence>
+  );
+}
+
+function AppWrapper() {
+  return (
+    <Router>
+      <App />
     </Router>
   );
 }
 
-export default App;
+export default AppWrapper;

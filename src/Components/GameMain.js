@@ -10,11 +10,12 @@ function GameMain() {
   const [analysis, setAnalysis] = useState(''); // 사용자가 입력한 분석 내용을 저장하는 상태 변수
   const [error, setError] = useState(''); // 에러 메시지 상태 변수
   const navigate = useNavigate();
+  const [feedback, setFeedback] = useState('');
+  const [scoreFeedback, setScoreFeedback] = useState('');
 
   // 체크박스 상태 불러오기
   const showMainSectorTitle = localStorage.getItem('showMainSectorTitle') === 'true';
   const showFinancialData = localStorage.getItem('showFinancialData') === 'true';
-  const showOtherCharts = localStorage.getItem('showOtherCharts') === 'true';
 
   useEffect(() => {
     const storedName = localStorage.getItem('userName');
@@ -50,14 +51,12 @@ function GameMain() {
       const selectedOptions = {
         mainSectorTitle: showMainSectorTitle,
         financialData: showFinancialData,
-        otherChartsImages: showOtherCharts,
       };
 
       const requestData = {
         user_analysis: analysis,  // 사용자가 입력한 분석 내용
         main_sector_title: chartData?.main_sector_title || "N/A",  // 메인 섹터 타이틀
         main_chart_image: chartData?.main_chart_image || "N/A",  // 메인 차트 이미지
-        other_charts_images: chartData?.other_charts_images || [],  // 동일 섹터군의 다른 종목 차트 이미지
         financial_data: chartData?.financial_data || [],  // 재무 데이터
         selected_options: selectedOptions,
       };
@@ -75,8 +74,7 @@ function GameMain() {
     } catch (error) {
       console.error('피드백 요청에 실패했습니다:', error);
     }
-};
-
+  };
 
   const renderHearts = () => {
     return Array.from({ length: lives }, (_, i) => <span key={i} className="heart">❤️</span>);
@@ -84,12 +82,6 @@ function GameMain() {
 
   const handleBackClick = () => {
     navigate('/GameIntro');
-  };
-
-  const handleChartClick = (index) => {
-    if (chartData && chartData.other_charts_images && chartData.other_charts_images[index]) {
-      console.log(`Chart ${index + 1} clicked`);
-    }
   };
 
   const renderFinancialTable = () => {
@@ -128,35 +120,23 @@ function GameMain() {
   return (
     <div className="app">
       <div className="top-bar">
-        <div className="title">
-          <h1>RichReach</h1>
+      <div className="title">
+          <h3 className="title-1">주식학습플랫폼</h3>
+          <h1 className="title-2">RichReach</h1>
         </div>
         <div className="hearts">{renderHearts()}</div>
       </div>
 
-      <div className="arrow-container">
-        <img
-          src={`${process.env.PUBLIC_URL}/image/arrow.png`}
-          alt="Back Arrow"
-          className="back-arrow"
-          onClick={handleBackClick}
-        />
-      </div>
-
       <div className="content-main">
         <div className="chart-grid">
-          {showOtherCharts && chartData && chartData.other_charts_images
+          {chartData && chartData.other_charts_images
             ? chartData.other_charts_images.map((img, index) => (
-                <div
-                  key={index}
-                  className="chart-card"
-                  onClick={() => handleChartClick(index)}
-                >
+                <div key={index} className="chart-card-static">
                   <img src={`data:image/png;base64,${img}`} alt={`Chart ${index + 1}`} className="chart-image" />
                 </div>
               ))
-            : !showOtherCharts && Array.from({ length: 6 }, (_, index) => (
-                <div key={index} className="chart-card">
+            : Array.from({ length: 6 }, (_, index) => (
+                <div key={index} className="chart-card-static">
                   <h3>주식차트 {index + 1}</h3>     
                 </div>
               ))}

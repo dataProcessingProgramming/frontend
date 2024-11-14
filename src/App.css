@@ -1,0 +1,24 @@
+/* 페이지 진입 애니메이션 */
+.page-enter {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  
+  .page-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 500ms, transform 500ms;
+  }
+  
+  /* 페이지 나갈 때 애니메이션 */
+  .page-exit {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .page-exit-active {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 500ms, transform 500ms;
+  }
+  
