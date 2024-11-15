@@ -103,7 +103,7 @@
   width: 100%;
   flex-direction: column;
   align-items: center; /* 중앙 배치 */
-  background-color: #fff;
+  background-color: #dde6ff42;
   padding: 1.5rem;
   border-radius: 8px;
   box-sizing: border-box;
@@ -122,7 +122,7 @@
 
 .analysis-container {
   font-family: 'Paperlogy-4Regular';
-  background-color: #fff;
+  background-color: #dde6ff42;
   padding: 1rem;
   border-radius: 8px;
   box-sizing: border-box;

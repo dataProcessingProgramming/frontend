@@ -16,6 +16,7 @@ function GameMain() {
   // 체크박스 상태 불러오기
   const showMainSectorTitle = localStorage.getItem('showMainSectorTitle') === 'true';
   const showFinancialData = localStorage.getItem('showFinancialData') === 'true';
+  const showOtherCharts = localStorage.getItem('showOtherCharts') === 'true';
 
   useEffect(() => {
     const storedName = localStorage.getItem('userName');
@@ -51,12 +52,14 @@ function GameMain() {
       const selectedOptions = {
         mainSectorTitle: showMainSectorTitle,
         financialData: showFinancialData,
+        otherChartsImages: showOtherCharts,
       };
 
       const requestData = {
         user_analysis: analysis,  // 사용자가 입력한 분석 내용
         main_sector_title: chartData?.main_sector_title || "N/A",  // 메인 섹터 타이틀
         main_chart_image: chartData?.main_chart_image || "N/A",  // 메인 차트 이미지
+        other_charts_images: chartData?.other_charts_images || [],  // 동일 섹터군의 다른 종목 차트 이미지
         financial_data: chartData?.financial_data || [],  // 재무 데이터
         selected_options: selectedOptions,
       };
@@ -68,21 +71,35 @@ function GameMain() {
         },
         body: JSON.stringify(requestData),
       });
-
+  
       const result = await response.json();
-      console.log('서버로부터 받은 분석 피드백:', result);
+  
+      // 서버 응답 데이터를 화면에 표시
+      setFeedback(result.feedback);  // 피드백 내용을 저장
+      setScoreFeedback(result.score_feedback);  // 점수 피드백을 저장
+
+      // 콘솔창에 피드백과 점수 출력
+      console.log('서버 응답 피드백:', result.feedback);
+      console.log('서버 응답 점수 피드백:', result.score_feedback);
+
+      navigate('/GameResult', { 
+        state: { 
+          feedback: result.feedback, 
+          scoreFeedback: result.score_feedback, 
+          userAnalysis: analysis
+        } 
+      });
+
     } catch (error) {
       console.error('피드백 요청에 실패했습니다:', error);
     }
-  };
+};
+
 
   const renderHearts = () => {
     return Array.from({ length: lives }, (_, i) => <span key={i} className="heart">❤️</span>);
   };
 
-  const handleBackClick = () => {
-    navigate('/GameIntro');
-  };
 
   const renderFinancialTable = () => {
     if (!financialData) return <p>재무제표 데이터를 불러오는 중입니다...</p>;
@@ -141,6 +158,7 @@ function GameMain() {
                 </div>
               ))}
         </div>
+
 
         <div className="right-panel">
           <div className="chart-detail">

@@ -4,14 +4,14 @@ import '../style/GameResult.css';
 
 function GameResult() {
   const [name, setName] = useState('');
-  const [lives, setLives] = useState(3);
+  const [lives, setLives] = useState(() => Number(localStorage.getItem('lives')) || 3);
   const [chartData, setChartData] = useState(null); // Main chart and other charts
   const [financialData, setFinancialData] = useState(null); // Financial data for main chart
   const navigate = useNavigate();
   const location = useLocation();
 
   // 전달된 데이터를 가져옵니다.
-  const { userAnalysis, feedback } = location.state || {};
+  const { userAnalysis, feedback, scoreFeedback } = location.state || {};
 
   useEffect(() => {
     const storedName = localStorage.getItem('userName');
@@ -37,16 +37,6 @@ function GameResult() {
 
   const renderHearts = () => {
     return Array.from({ length: lives }, (_, i) => <span key={i} className="heart">❤️</span>);
-  };
-
-  const handleBackClick = () => {
-    navigate('/GameIntro');
-  };
-
-  const handleChartClick = (index) => {
-    if (chartData && chartData.other_charts_images && chartData.other_charts_images[index]) {
-      console.log(`Chart ${index + 1} clicked`);
-    }
   };
 
   const renderFinancialTable = () => {
@@ -82,6 +72,19 @@ function GameResult() {
     );
   };
 
+  const handleNextClick = () => {
+    if (scoreFeedback >= 80) {
+      navigate('/PassResult');
+    } else {
+      setLives((prevLives) => {
+      const updatedLives = prevLives - 1;
+      localStorage.setItem('lives', updatedLives);
+      return updatedLives;
+    }); // 점수가 70점 미만일 경우 생명 차감
+      navigate('/FailResult');
+    }
+  };
+
   return (
     <div className="app">
       <div className="top-bar">
@@ -92,17 +95,7 @@ function GameResult() {
         <div className="hearts">{renderHearts()}</div>
       </div>
 
-      <div className="arrow-container">
-        <img
-          src={`${process.env.PUBLIC_URL}/image/arrow.png`}
-          alt="Back Arrow"
-          className="back-arrow"
-          onClick={handleBackClick}
-        />
-      </div>
-
       <div className="content-main">
-
         <div className="right-panel">
           <div className="chart-detail">
             <h3>사용자가 분석한 내용</h3>
@@ -118,7 +111,7 @@ function GameResult() {
             </div>
           </div>
           
-          <button className="submit-button" onClick={() => navigate('/NextPage')}>다음</button>
+          <button className="nextgame-button" onClick={handleNextClick}>다음</button>
           
         </div>
       </div>

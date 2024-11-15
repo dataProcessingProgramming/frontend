@@ -1,127 +1,124 @@
 .app {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #ffffff;
-    overflow-y: auto;
-  }
-  
-  .top-bar {
-    width: 100%;
-    padding: 1rem;
-    background-color: #3366ff;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .arrow-container {
-    width: 100%;
-    text-align: left;
-    padding: 0.5rem 0;
-    margin-left: 1rem;
-  }
-  
-  .back-arrow {
-    width: 2.2rem;
-    height: 3rem;
-    cursor: pointer;
-  }
-  
-  .content-main {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    padding: 1.5rem;
-    width: 90%;
-    max-width: 1400px; 
-    box-sizing: border-box;
-  }
-  
-  .chart-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    flex: 1;
-    max-width: 700px;
-    margin-left: -5crem;
-    margin-top: -1.5rem;
-  }
-  
-  .chart-card {
-    background-color: #fff;
-    padding: 1.5rem;
-    border-radius: 8px;
-    text-align: center;
-    cursor: pointer;
-    height: 200px;
-  }
-  
-  .chart-card h3 {
-    font-size: 1.2rem;
-  }
-  
-  .chart-card:hover {
-    background-color: #d0e0ff;
-  }
-  
-  .right-panel {
-    display: flex;
-    flex-direction: column; 
-    gap: 1.5rem;
-    flex: 1;
-    min-width: 300px;
-    max-width: 1500px;
-    margin-top: -1.5rem; 
-  }
-  
-  .chart-detail,
-  .analysis-container {
-    background-color: #dde6ff42;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-  }
-  
-  .chart-detail {
-    min-height: 200px;
-  }
-  
-  .analysis-container {
-    min-height: 150px;
-  }
-  
-  .analysis-input {
-    width: 100%;
-    height: 100px;
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin-bottom: 1rem;
-  }
-  
-  .submit-button {
-    padding: 0.5rem 1rem;
-    background-color: #3366ff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    align-self: flex-start;
-  }
-  
-  .submit-button:hover {
-    background-color: #254edb;
-  }
-  
-  .bottom-bar {
-    width: 100%;
-    padding: 1rem;
-    background-color: #3366ff;
-    color: white;
-    text-align: left;
-    margin-top: auto;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  overflow-y: auto;
+}
+
+.top-bar {
+  width: 100%;
+  padding: 1rem;
+  background-color: #3366ff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow-container {
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0;
+  margin-left: 1rem;
+}
+
+.back-arrow {
+  width: 2.2rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.content-main {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 1400px; 
+  box-sizing: border-box;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  flex: 1;
+  max-width: 700px;
+  margin-left: -5rem;
+  margin-top: -1.5rem;
+}
+
+.chart-card {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  height: 200px;
+}
+
+.chart-card h3 {
+  font-size: 1.2rem;
+}
+
+.chart-card:hover {
+  background-color: #d0e0ff;
+}
+
+.right-panel {
+  display: flex;
+  flex-direction: column; 
+  gap: 1.5rem;
+  flex: 1;
+  min-width: 300px;
+  max-width: 1500px;
+  margin-top: -1.5rem; 
+}
+
+.analysis-content {
+  background-color: #dde6ff42;
+  font-family: 'Paperlogy-4Regular';
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  margin-left: 3rem;
+  min-height: 200px;
+}
+
+.analysis-input {
+  width: 100%;
+  height: 100px;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.nextgame-button {
+  font-family: 'Paperlogy-4Regular';
+  padding: 0.6rem 1.2rem;
+  background-color: #3366ff;
+  font-size: 1.2rem;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-left: 40rem;
+}
+
+.nextgame-button:hover {
+  background-color: #254edb;
+}
+
+.bottom-bar {
+  width: 100%;
+  padding: 1rem;
+  background-color: #3366ff;
+  color: white;
+  text-align: left;
+  margin-top: auto;
+}

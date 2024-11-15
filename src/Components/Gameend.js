@@ -28,10 +28,6 @@ function Gameend() {
     return hearts;
   };
 
-  const handleBackClick = () => {
-    navigate('/name');
-  };
-
   const handleNextClick = () => {
     navigate('/');
   };
@@ -57,7 +53,7 @@ function Gameend() {
             넘었습니다!<br /> <br />
             현재 통과한 문제 개수: {passedCount} <br/><br />
             모든 문제를 <br />
-            통과하셨습니다 <br /> <br />
+            통과하셨습니다. <br /> <br />
             이젠 실전입니다!</p>
 
           <button className="over-button" onClick={handleNextClick}>게임 종료</button>

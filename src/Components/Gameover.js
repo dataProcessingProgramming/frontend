@@ -18,11 +18,7 @@ function Gameover() {
       setPassedCount(Number(storedPassedCount));
     }
   }, []);
-
-  const handleBackClick = () => {
-    navigate('/name');
-  };
-
+  
   const handleNextClick = () => {
     navigate('/');
   };
