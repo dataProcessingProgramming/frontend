@@ -22,6 +22,13 @@ function FailResult() {
     if (storedPassedCount) {
       setPassedCount(Number(storedPassedCount));
     }
+
+    // 생명 1개 차감
+    setLives((prevLives) => {
+      const updatedLives = prevLives - 1;
+      localStorage.setItem('lives', updatedLives); // localStorage에 반영
+      return updatedLives;
+    });
   }, []);
 
   const renderHearts = () => {
@@ -31,8 +38,15 @@ function FailResult() {
     }
     return hearts;
   };
+
   const handleNextClick = () => {
-    navigate('/gamemain'); 
+    if (lives <= 0) {
+      // 생명이 0 이하일 경우 GameOver 페이지로 이동
+      navigate('/gameover');
+    } else {
+      // 생명이 남아있으면 다음 라운드 진행
+      navigate('/gamemain'); 
+    }
   };
 
   return (
@@ -57,7 +71,10 @@ function FailResult() {
             생명 1개가 차감됩니다. <br /> <br />
             현재 통과한 문제 개수: {passedCount}<br/><br/><br/></p>
 
-          <button className="next-button" onClick={handleNextClick}>다음 라운드 진행</button>
+          {/* 버튼 텍스트를 동적으로 설정 */}
+          <button className="next-button" onClick={handleNextClick}>
+            {lives <= 0 ? '다음' : '다음 라운드 진행'}
+          </button>
         </div>
       </div>
 

@@ -68,7 +68,7 @@ function GameIntro() {
              주식 학습 게임 RichReach는 <br/>
              주식에 대한 기본적 지식은 존재하지만 <br/>
              실전 경험은 없는 초보자를 위한 학습 게임입니다. <br/><br/>
-             주식 차트의 일부분을 보여드릴테니 <br/>이후에 일어날 변화를 예측해보세요.<br/>
+             임의의 주식의 2023년 차트를 보여드릴테니 <br/>이후에 일어날 변화를 예측해보세요.<br/>
              해당 차트에 대한 추가적인 정보를 함께 알고싶다면 <br/>
              밑의 체크박스에서 원하는 정보들을 체크해주시면 됩니다. <br/> <br/>
              게임의 생명은 3개가 주어지고, <br/>예측 점수가 70점 이하일시 생명은 깎이게 됩니다.<br/>
@@ -78,7 +78,7 @@ function GameIntro() {
           <div className="rules">
             <p><input type="checkbox" checked={showMainSectorTitle} onChange={() => setShowMainSectorTitle(!showMainSectorTitle)} /> 문제에 주어진 차트의 종목명</p>
             <p><input type="checkbox" checked={showFinancialData} onChange={() => setShowFinancialData(!showFinancialData)} /> 문제에 주어진 차트의 재무제표</p>
-            <p><input type="checkbox" checked={showOtherCharts} onChange={() => setShowOtherCharts(!showOtherCharts)} /> 동일 섹터군의 다른 종목의 이후 차트</p>
+            <p><input type="checkbox" checked={showOtherCharts} onChange={() => setShowOtherCharts(!showOtherCharts)} /> 동일 섹터군의 다른 종목의 2024년 차트</p>
           </div>
 
           <button className="submit-button" onClick={handleSubmitClick}>

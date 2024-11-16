@@ -4,7 +4,7 @@ import '../style/GameMain.css';
 
 function GameMain() {
   const [name, setName] = useState('');
-  const [lives, setLives] = useState(3);
+  const [lives, setLives] = useState(() => Number(localStorage.getItem('lives')) || 3);
   const [chartData, setChartData] = useState(null);
   const [financialData, setFinancialData] = useState(null);
   const [analysis, setAnalysis] = useState(''); // 사용자가 입력한 분석 내용을 저장하는 상태 변수

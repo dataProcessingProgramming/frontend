@@ -107,7 +107,7 @@
   border-radius: 4px;
   cursor: pointer;
   align-self: flex-start;
-  margin-left: 40rem;
+  margin-right: 0;
 }
 
 .nextgame-button:hover {

@@ -1,5 +1,4 @@
-// Main.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import '../style/Main.css';
@@ -7,6 +6,12 @@ import '../style/Main.css';
 function Main() {
   const navigate = useNavigate(); 
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  // Main 페이지에 방문 시 lives와 passedCount 초기화
+  useEffect(() => {
+    localStorage.setItem('lives', 3); // lives 값을 3으로 초기화
+    localStorage.setItem('passedCount', 0); // 맞힌 개수(passedCount)를 0으로 초기화
+  }, []);
 
   const handleImageLoad = () => {
     setIsImageLoaded(true);

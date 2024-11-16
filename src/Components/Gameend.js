@@ -4,7 +4,7 @@ import '../style/Gameend.css';
 
 function Gameend() {
   const [name, setName] = useState('');
-  const [lives, setLives] = useState(3);
+  const [lives, setLives] = useState(() => Number(localStorage.getItem('lives')) || 3);
   const [passedCount, setPassedCount] = useState(0);
   const navigate = useNavigate();
 
@@ -49,9 +49,6 @@ function Gameend() {
         <div className="container-over">
           <h1>게임 종료</h1>
           <p>축하합니다.<br />
-            80점을 <br />
-            넘었습니다!<br /> <br />
-            현재 통과한 문제 개수: {passedCount} <br/><br />
             모든 문제를 <br />
             통과하셨습니다. <br /> <br />
             이젠 실전입니다!</p>

@@ -13,75 +13,34 @@ function GameResult() {
   // 전달된 데이터를 가져옵니다.
   const { userAnalysis, feedback, scoreFeedback } = location.state || {};
 
-  useEffect(() => {
-    const storedName = localStorage.getItem('userName');
-    if (storedName) {
-      setName(storedName);
-    }
-
-    const fetchChartData = async () => {
-      try {
-        const response = await fetch('http://localhost:8000/sectors-charts', {
-          mode: 'cors'
-        });
-        const data = await response.json();
-        setChartData(data);
-        setFinancialData(data.financial_data); // Set initial financial data for main chart
-      } catch (error) {
-        console.error('차트 데이터를 불러오는데 실패했습니다:', error);
-      }
-    };
-
-    fetchChartData();
-  }, []);
+  const feedbackText = feedback.replace(/평가 점수: \d+ 점$/, '').trim(); // 평가 점수 부분 제거
+  const feedbackscore = feedback.match(/평가 점수: \d+ 점$/)?.[0] || ''; // 평가 점수 추출
 
   const renderHearts = () => {
     return Array.from({ length: lives }, (_, i) => <span key={i} className="heart">❤️</span>);
   };
 
-  const renderFinancialTable = () => {
-    if (!financialData) return <p>재무제표 데이터를 불러오는 중입니다...</p>;
-
-    return (
-      <table className="financial-table">
-        <thead>
-          <tr>
-            <th>분기</th>
-            <th>매출액</th>
-            <th>순이익</th>
-            <th>영업이익률</th>
-            <th>부채비율</th>
-            <th>EPS (주당순이익)</th>
-            <th>ROE (자기자본이익률)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {financialData.map((item, index) => (
-            <tr key={index}>
-              <td>{item.quarter}</td>
-              <td>{item.revenue}</td>
-              <td>{item.net_profit}</td>
-              <td>{item.operating_margin}</td>
-              <td>{item.debt_ratio}</td>
-              <td>{item.eps}</td>
-              <td>{item.roe}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
-  };
-
   const handleNextClick = () => {
-    if (scoreFeedback >= 70) {
-      navigate('/PassResult');
+    const score = parseInt(scoreFeedback.match(/\d+/)[0], 10);
+    const result = feedback.match(/\d+\s*점/)[0];
+
+    if (score >= 70) {
+      navigate('/PassResult', {
+        state: {
+          scoreFeedback: result
+        }
+      });
     } else {
       setLives((prevLives) => {
       const updatedLives = prevLives - 1;
       localStorage.setItem('lives', updatedLives);
       return updatedLives;
     }); // 점수가 70점 미만일 경우 생명 차감
-      navigate('/FailResult');
+      navigate('/FailResult', {
+        state: {
+          scoreFeedback: result
+        }
+      });
     }
   };
 
@@ -107,7 +66,9 @@ function GameResult() {
           <div className="chart-detail">
             <h3>챗GPT를 통한 분석 내용</h3>
             <div className="chart-info"> 
-              <p>{feedback}</p> {/* ChatGPT 분석 내용 표시 */}
+              {/* 분석 내용과 평가 점수 분리 */}
+              <p>{feedbackText}</p>
+              <p className="score">{feedbackscore}</p>
             </div>
           </div>
           
