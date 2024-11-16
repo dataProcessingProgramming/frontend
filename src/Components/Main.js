@@ -38,9 +38,14 @@ function Main() {
           className={`top-image ${isImageLoaded ? 'fade-in' : ''}`} 
           onLoad={handleImageLoad} 
         />
+        <br></br>
         <div className="text-1">RichReach</div>
         <div className="text-2">주식 학습 플랫폼</div>
+        <br></br>
+        <br></br>
         <button className="start-button-main" onClick={handleStartClick}>시작하기</button>
+        <br></br>
+        <br></br>
         <img src={`${process.env.PUBLIC_URL}/image/logo.png`} alt="" className="bottom-image" />
         <p className="footer-text-main">데이터처리프로그래밍 1조 - 박찬영, 최문영, 김채연</p>
       </div>

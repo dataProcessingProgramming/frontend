@@ -73,7 +73,7 @@ function GameResult() {
   };
 
   const handleNextClick = () => {
-    if (scoreFeedback >= 80) {
+    if (scoreFeedback >= 70) {
       navigate('/PassResult');
     } else {
       setLives((prevLives) => {
