@@ -50,6 +50,9 @@
   margin-top: -1.5rem;
 }
 
+.chart-detail {
+  margin-left: 10rem;
+}
 .chart-card {
   background-color: #fff;
   padding: 1.5rem;
@@ -107,7 +110,7 @@
   border-radius: 4px;
   cursor: pointer;
   align-self: flex-start;
-  margin-right: 0;
+  margin-left: 40rem;
 }
 
 .nextgame-button:hover {
@@ -121,4 +124,11 @@
   color: white;
   text-align: left;
   margin-top: auto;
+}
+.loading-message {
+  font-family: 'Paperlogy-4Regular';
+  font-size: 1.5rem;
+  color: #3366ff;
+  margin-top: 2rem;
+  text-align: center;
 }

@@ -53,7 +53,7 @@ function Name() {
           onChange={handleInputChange} 
           onKeyPress={handleKeyPress} 
         />
-        <button className="submit-name" onClick={handleSubmit}>제출</button>
+        <button className="name-submit" onClick={handleSubmit}>제출</button>
       </div>
 
       <div className="bottom-bar"></div>

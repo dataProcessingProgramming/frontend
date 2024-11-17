@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=M+PLUS+2:wght@100..900&family=Nanum+Gothic&display=swap');
 
 @font-face {
@@ -83,10 +82,10 @@
   margin-top: 10rem;
 }
 
-.submit-name {
+.name-submit {
   font-family: 'Paperlogy-5Medium';
-  padding: 0.8rem 1.5rem;
-  font-size: 1.3rem;
+  padding: 0.7rem 1.3rem;
+  font-size: 1.4rem;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
   background-color: #3366ff;
@@ -106,6 +105,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-top: 1rem;
+  text-align: center;
 }
 
 .footer-text {
